@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  blog-back:
+    build:
+      context: .
+    volumes:
+      - .:/app
+      - /app/node_modules/
+
+    ports:
+      - "4040:4040"
+
+    env_file:
+      - .env
+
+    environment:
+      - MONGO_HOST=mongodb://mongo/blog-back-development
+      - DEBUG=blog-back:*
+    links:
+      - mongo
+  mongo:
+    image: "mongo:3.4.2"
+    ports:
+      - "27017:27017"

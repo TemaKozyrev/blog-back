@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+  blog-back:
+    build:
+      context: .
+
+    image: blog-back:latest
+
+    volumes:
+      - .:/app
+      - /app/node_modules/
+
+    env_file:
+      - .env
+
+    environment:
+      - MONGO_HOST=mongodb://mongo/blog-back-test
+      - DEBUG=blog-back:*
+    links:
+      - mongo
+
+    command:
+      - /bin/bash
+      - -c
+      - yarn --pure-lockfile && yarn test
+  mongo:
+    image: "mongo:3.4.2"
+    ports:
+      - "27017:27017"
