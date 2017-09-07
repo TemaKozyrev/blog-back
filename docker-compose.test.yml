@@ -14,7 +14,7 @@ services:
     env_file:
       - .env
 
-    environment:
+    # environment:
       # - MONGO_HOST=mongodb://mongo/blog-back-test
       # - DEBUG=blog-back:*
     links:
