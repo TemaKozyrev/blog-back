@@ -4,9 +4,9 @@ services:
   blog-back:
     build:
       context: .
-    volumes:
-      - .:/app
-      - /app/node_modules/
+    # volumes:
+    #   - .:/app
+    #   - /app/node_modules/
 
     ports:
       - "4040:4040"
