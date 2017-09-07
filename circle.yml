@@ -10,5 +10,5 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               scp -o "StrictHostKeyChecking no" -r ~/repo/* circleci@kzrv.tk:~/blog-back
-              ssh circleci@kzrv.tk "cd blog-back && docker-compose up --build -d"
+              ssh circleci@kzrv.tk "cd blog-back && docker-compose down && docker-compose up --build -d"
             fi
